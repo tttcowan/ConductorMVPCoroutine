@@ -8,9 +8,9 @@ import com.appsauce.mvpappsauce.base.BaseController
 import com.appsauce.mvpappsauce.extension.toast
 import com.appsauce.mvpappsauce.module.PresenterModule
 
-class HomeController : BaseController<HomeView, HomePresenter<HomeView>>(), HomeView {
+class HomeController : BaseController<HomeView, HomePresenter>(), HomeView {
 
-    override lateinit var presenter: HomePresenter<HomeView>
+    override lateinit var presenter: HomePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         presenter = PresenterModule.home()
@@ -18,7 +18,11 @@ class HomeController : BaseController<HomeView, HomePresenter<HomeView>>(), Home
     }
 
     override fun callComplete() {
-        "Call complete".toast()
+        presenter.callReturn()
+    }
+
+    override fun dialogReturn() {
+        "Dialog callback".toast()
     }
 
 }

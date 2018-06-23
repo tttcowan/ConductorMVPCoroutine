@@ -12,4 +12,35 @@
         <item name="textColorError">@color/textColorError</item>
     </style>
 
+    <style name="ControllerRootLayout">
+        <item name="android:paddingRight">@dimen/controller_margin</item>
+        <item name="android:paddingLeft">@dimen/controller_margin</item>
+    </style>
+
+    <style name="DialogContainer">
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:elevation" tools:targetApi="lollipop">6dp</item>
+        <item name="android:minWidth">280dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@drawable/dialog_bg</item>
+    </style>
+
+    <style name="DialogMessageText">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginLeft">26dp</item>
+        <item name="android:layout_marginRight">26dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="DialogButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:minWidth">72dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
 </resources>

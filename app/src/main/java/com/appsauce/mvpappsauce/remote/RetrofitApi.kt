@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface RetrofitApi {
 
     @GET("posts")
-    fun call() : Completable
+    fun call(): Completable
 }

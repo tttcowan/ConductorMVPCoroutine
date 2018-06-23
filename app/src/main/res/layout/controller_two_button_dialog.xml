@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/as_dialog_transparency">
+
+    <LinearLayout
+        style="@style/DialogContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/messageText"
+            style="@style/DialogMessageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            tools:text="Dialog Text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <com.appsauce.mvpappsauce.commonui.AsButton
+                android:id="@+id/secondaryBalance"
+                style="@style/DialogButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="Button Text" />
+
+            <com.appsauce.mvpappsauce.commonui.AsButton
+                android:id="@+id/primaryButton"
+                style="@style/DialogButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="Button Text" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

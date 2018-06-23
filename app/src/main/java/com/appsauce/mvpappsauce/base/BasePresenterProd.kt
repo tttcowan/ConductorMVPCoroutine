@@ -17,4 +17,15 @@ abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
         disposable.clear()
     }
 
+    override fun dialogDismiss() {
+    }
+
+    override fun dialogPrimary() {
+
+    }
+
+    override fun dialogSecondary() {
+
+    }
+
 }

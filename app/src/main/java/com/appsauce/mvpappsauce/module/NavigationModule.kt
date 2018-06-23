@@ -1,10 +1,11 @@
 package com.appsauce.mvpappsauce.module
 
-import com.appsauce.mvpappsauce.main.MainActivity
+import com.appsauce.mvpappsauce.app.App
 import com.appsauce.mvpappsauce.navigation.NavigationService
+import com.appsauce.mvpappsauce.navigation.NavigationServiceProd
 
 object NavigationModule {
     fun navigationService(): NavigationService {
-        return MainActivity.navigationService
+        return NavigationServiceProd(App.getRouter())
     }
 }

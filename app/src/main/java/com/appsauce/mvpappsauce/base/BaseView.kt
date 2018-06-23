@@ -1,3 +1,7 @@
 package com.appsauce.mvpappsauce.base
 
-interface BaseView
+interface BaseView {
+    fun dialogDismiss()
+    fun dialogPrimary()
+    fun dialogSecondary()
+}

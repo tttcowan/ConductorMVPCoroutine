@@ -26,4 +26,15 @@ abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controlle
         presenter.detachView()
     }
 
+    override fun dialogDismiss() {
+        presenter.dialogDismiss()
+    }
+
+    override fun dialogPrimary() {
+        presenter.dialogPrimary()
+    }
+
+    override fun dialogSecondary() {
+        presenter.dialogSecondary()
+    }
 }
