@@ -1,5 +1,6 @@
 package com.appsauce.mvpappsauce.base
 
+import com.appsauce.mvpappsauce.dialog.DialogId
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
@@ -17,14 +18,14 @@ abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
         disposable.clear()
     }
 
-    override fun dialogDismiss() {
+    override fun dialogDismiss(dialogId: DialogId) {
     }
 
-    override fun dialogPrimary() {
+    override fun dialogPrimary(dialogId: DialogId) {
 
     }
 
-    override fun dialogSecondary() {
+    override fun dialogSecondary(dialogId: DialogId) {
 
     }
 

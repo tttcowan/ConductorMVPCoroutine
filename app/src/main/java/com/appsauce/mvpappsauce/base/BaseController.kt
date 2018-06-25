@@ -2,6 +2,7 @@ package com.appsauce.mvpappsauce.base
 
 import android.os.Bundle
 import android.view.View
+import com.appsauce.mvpappsauce.dialog.DialogId
 import com.bluelinelabs.conductor.Controller
 
 abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controller, BaseView {
@@ -26,15 +27,15 @@ abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controlle
         presenter.detachView()
     }
 
-    override fun dialogDismiss() {
-        presenter.dialogDismiss()
+    override fun dialogDismiss(dialogId: DialogId) {
+        presenter.dialogDismiss(dialogId)
     }
 
-    override fun dialogPrimary() {
-        presenter.dialogPrimary()
+    override fun dialogPrimary(dialogId: DialogId) {
+        presenter.dialogPrimary(dialogId)
     }
 
-    override fun dialogSecondary() {
-        presenter.dialogSecondary()
+    override fun dialogSecondary(dialogId: DialogId) {
+        presenter.dialogSecondary(dialogId)
     }
 }
