@@ -27,8 +27,10 @@ object PresenterModule {
     }
 
     fun home(): HomePresenter {
-        return HomePresenterProd(RemoteModule.remoteService(),
-                NavigationModule.navigationService(),
-                DialogModule.dialogService())
+        return HomePresenterProd(
+            RemoteModule.remoteService(),
+            NavigationModule.navigationService(),
+            DialogModule.dialogService()
+        )
     }
 }

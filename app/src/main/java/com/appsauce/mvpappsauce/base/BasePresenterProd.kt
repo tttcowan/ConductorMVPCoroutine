@@ -22,11 +22,8 @@ abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
     }
 
     override fun dialogPrimary(dialogId: DialogId) {
-
     }
 
     override fun dialogSecondary(dialogId: DialogId) {
-
     }
-
 }

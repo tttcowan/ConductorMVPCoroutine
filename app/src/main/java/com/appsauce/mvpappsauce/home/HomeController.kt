@@ -24,5 +24,4 @@ class HomeController : BaseController<HomeView, HomePresenter>(), HomeView {
     override fun dialogReturn() {
         "Dialog callback".toast()
     }
-
 }

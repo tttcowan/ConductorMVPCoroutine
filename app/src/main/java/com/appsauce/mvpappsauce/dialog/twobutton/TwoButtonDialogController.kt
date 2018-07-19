@@ -9,9 +9,12 @@ import com.appsauce.mvpappsauce.base.BaseController
 import com.appsauce.mvpappsauce.base.BaseView
 import com.appsauce.mvpappsauce.dialog.DialogId
 import com.appsauce.mvpappsauce.module.PresenterModule
-import kotlinx.android.synthetic.main.controller_two_button_dialog.view.*
+import kotlinx.android.synthetic.main.controller_two_button_dialog.view.messageText
+import kotlinx.android.synthetic.main.controller_two_button_dialog.view.primaryButton
+import kotlinx.android.synthetic.main.controller_two_button_dialog.view.secondaryBalance
 
-class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialogView, TwoButtonDialogPresenter>(bundle), TwoButtonDialogView {
+class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialogView, TwoButtonDialogPresenter>(bundle),
+    TwoButtonDialogView {
 
     override lateinit var presenter: TwoButtonDialogPresenter
 
@@ -27,7 +30,12 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
         private const val KEY_PRIMARY_BUTTON_TEXT = "KEY_PRIMARY_BUTTON_TEXT"
         private const val KEY_SECONDARY_BUTTON_TEXT = "KEY_SECONDARY_BUTTON_TEXT"
 
-        internal fun newInstance(primaryButtonText: String, secondaryButtonText: String, dialogText: String, dialogId: DialogId): TwoButtonDialogController {
+        internal fun newInstance(
+            primaryButtonText: String,
+            secondaryButtonText: String,
+            dialogText: String,
+            dialogId: DialogId
+        ): TwoButtonDialogController {
             val bundle = Bundle()
             bundle.putString(KEY_DIALOG_TEXT, dialogText)
             bundle.putString(KEY_PRIMARY_BUTTON_TEXT, primaryButtonText)
@@ -45,7 +53,6 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
         view.messageText.text = dialogText
         setOnClickListeners(view)
         return view
-
     }
 
     private fun setOnClickListeners(view: View) {
@@ -60,7 +67,7 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
 
     private fun primary() {
         val controller = targetController
-                ?: throw RuntimeException("Failed to find target controller")
+            ?: throw RuntimeException("Failed to find target controller")
         if (controller is BaseView) {
             controller.dialogPrimary(dialogId)
         } else {
@@ -71,7 +78,7 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
 
     private fun secondary() {
         val controller = targetController
-                ?: throw RuntimeException("Failed to find target controller")
+            ?: throw RuntimeException("Failed to find target controller")
         if (controller is BaseView) {
             controller.dialogSecondary(dialogId)
         } else {
@@ -82,7 +89,7 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
 
     private fun dismiss() {
         val controller = targetController
-                ?: throw RuntimeException("Failed to find target controller")
+            ?: throw RuntimeException("Failed to find target controller")
         if (controller is BaseView) {
             controller.dialogDismiss(dialogId)
         } else {
@@ -90,5 +97,4 @@ class TwoButtonDialogController(bundle: Bundle) : BaseController<TwoButtonDialog
         }
         router.popController(this)
     }
-
 }

@@ -9,9 +9,11 @@ import com.appsauce.mvpappsauce.base.BaseController
 import com.appsauce.mvpappsauce.base.BaseView
 import com.appsauce.mvpappsauce.dialog.DialogId
 import com.appsauce.mvpappsauce.module.PresenterModule
-import kotlinx.android.synthetic.main.controller_single_button_dialog.view.*
+import kotlinx.android.synthetic.main.controller_single_button_dialog.view.messageText
+import kotlinx.android.synthetic.main.controller_single_button_dialog.view.primaryButton
 
-class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialogView, SingleButtonDialogPresenter>(bundle), SingleButtonDialogView {
+class SingleButtonController(bundle: Bundle) :
+    BaseController<SingleButtonDialogView, SingleButtonDialogPresenter>(bundle), SingleButtonDialogView {
 
     override lateinit var presenter: SingleButtonDialogPresenter
 
@@ -25,7 +27,11 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
         private const val KEY_DIALOG_TEXT = "KEY_DIALOG_TEXT"
         private const val KEY_PRIMARY_BUTTON_TEXT = "KEY_PRIMARY_BUTTON_TEXT"
 
-        internal fun newInstance(primaryButtonText: String, dialogText: String, dialogId: DialogId): SingleButtonController {
+        internal fun newInstance(
+            primaryButtonText: String,
+            dialogText: String,
+            dialogId: DialogId
+        ): SingleButtonController {
             val bundle = Bundle()
             bundle.putString(KEY_DIALOG_TEXT, dialogText)
             bundle.putString(KEY_PRIMARY_BUTTON_TEXT, primaryButtonText)
@@ -33,7 +39,6 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
             return SingleButtonController(bundle)
         }
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view = inflater.inflate(R.layout.controller_single_button_dialog, container, false)
@@ -44,7 +49,6 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
         return view
     }
 
-
     private fun setOnClickListeners(view: View) {
         view.primaryButton.setOnClickListener { primary() }
         view.setOnClickListener { dismiss() }
@@ -52,7 +56,7 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
 
     private fun primary() {
         val controller = targetController
-                ?: throw RuntimeException("Failed to find target controller")
+            ?: throw RuntimeException("Failed to find target controller")
         if (controller is BaseView) {
             controller.dialogPrimary(dialogId)
         } else {
@@ -63,7 +67,7 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
 
     private fun dismiss() {
         val controller = targetController
-                ?: throw RuntimeException("Failed to find target controller")
+            ?: throw RuntimeException("Failed to find target controller")
         if (controller is BaseView) {
             controller.dialogDismiss(dialogId)
         } else {
@@ -71,5 +75,4 @@ class SingleButtonController(bundle: Bundle) : BaseController<SingleButtonDialog
         }
         router.popController(this)
     }
-
 }

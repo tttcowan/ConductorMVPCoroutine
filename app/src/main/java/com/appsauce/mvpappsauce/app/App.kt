@@ -24,7 +24,6 @@ class App : MultiDexApplication() {
         fun getRouter(): Router? {
             return APP.router
         }
-
     }
 
     private var router: Router? = null
@@ -33,5 +32,4 @@ class App : MultiDexApplication() {
         super.onCreate()
         APP = this
     }
-
 }

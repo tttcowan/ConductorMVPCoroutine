@@ -9,7 +9,12 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 
 class DialogServiceProd(private val router: Router?) : DialogService {
 
-    override fun showTwoButtonDialog(primaryButton: String, secondaryButton: String, message: String, dialogId: DialogId) {
+    override fun showTwoButtonDialog(
+        primaryButton: String,
+        secondaryButton: String,
+        message: String,
+        dialogId: DialogId
+    ) {
         navigate(TwoButtonDialogController.newInstance(primaryButton, secondaryButton, message, dialogId))
     }
 
@@ -21,11 +26,11 @@ class DialogServiceProd(private val router: Router?) : DialogService {
         router?.let {
             val parent = router.backstack[router.backstackSize - 1].controller()
             controller.targetController = parent
-            router.pushController(RouterTransaction.with(controller)
+            router.pushController(
+                RouterTransaction.with(controller)
                     .pushChangeHandler(FadeChangeHandler(false))
                     .popChangeHandler(FadeChangeHandler())
             )
         }
     }
-
 }

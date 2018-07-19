@@ -6,7 +6,7 @@ import com.appsauce.mvpappsauce.R
 import com.appsauce.mvpappsauce.app.App
 import com.appsauce.mvpappsauce.module.PresenterModule
 import com.bluelinelabs.conductor.Conductor
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.conductorContainer
 
 class MainActivity : AppCompatActivity(), MainView {
 

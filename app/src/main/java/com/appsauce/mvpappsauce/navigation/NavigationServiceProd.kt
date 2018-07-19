@@ -22,20 +22,28 @@ class NavigationServiceProd(private var router: Router?) : NavigationService {
         router = null
     }
 
-    private fun <V : BaseView, P : BasePresenter<V>> navigate(controller: BaseController<V, P>, fade: Boolean = true, isModal: Boolean = false) {
+    private fun <V : BaseView, P : BasePresenter<V>> navigate(
+        controller: BaseController<V, P>,
+        fade: Boolean = true,
+        isModal: Boolean = false
+    ) {
         //Attempt pop to TAG
         val popped = router?.popToTag(controller.tag()) ?: false
         if (!popped) {
             //Tag not found so push controller to top of stack
             var transaction = RouterTransaction.with(controller).tag(controller.tag())
             if (fade) {
-                transaction = transaction.popChangeHandler(FadeChangeHandler()).pushChangeHandler(FadeChangeHandler(!isModal))
+                transaction =
+                    transaction.popChangeHandler(FadeChangeHandler()).pushChangeHandler(FadeChangeHandler(!isModal))
             }
             router?.pushController(transaction)
         }
     }
 
-    private fun <V : BaseView, P : BasePresenter<V>> replaceRoot(controller: BaseController<V, P>, fade: Boolean = true) {
+    private fun <V : BaseView, P : BasePresenter<V>> replaceRoot(
+        controller: BaseController<V, P>,
+        fade: Boolean = true
+    ) {
         var transaction = RouterTransaction.with(controller).tag(controller.tag())
         if (fade) {
             transaction = transaction.popChangeHandler(FadeChangeHandler()).pushChangeHandler(FadeChangeHandler())
@@ -43,13 +51,14 @@ class NavigationServiceProd(private var router: Router?) : NavigationService {
         router?.setRoot(transaction)
     }
 
-    private fun <V : BaseView, P : BasePresenter<V>> replaceTop(controller: BaseController<V, P>, fade: Boolean = true) {
+    private fun <V : BaseView, P : BasePresenter<V>> replaceTop(
+        controller: BaseController<V, P>,
+        fade: Boolean = true
+    ) {
         var transaction = RouterTransaction.with(controller).tag(controller.tag())
         if (fade) {
             transaction = transaction.popChangeHandler(FadeChangeHandler()).pushChangeHandler(FadeChangeHandler())
         }
         router?.replaceTopController(transaction)
     }
-
-
 }

@@ -30,5 +30,4 @@ enum class DialogId(val asString: String) : Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }

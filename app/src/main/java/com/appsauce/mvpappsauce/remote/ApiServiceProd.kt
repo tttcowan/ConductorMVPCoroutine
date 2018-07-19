@@ -19,7 +19,6 @@ class ApiServiceProd : ApiService {
 
     private val gson: Gson = GsonBuilder().create()
 
-
     private fun okHttpClient(): OkHttpClient {
         var builder = OkHttpClient.Builder()
         if (DebugUtil.isDebug()) {
@@ -29,17 +28,17 @@ class ApiServiceProd : ApiService {
     }
 
     private val service: RetrofitApi =
-            Retrofit.Builder()
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(okHttpClient())
-                    .baseUrl(Constants.ENDPOINT)
-                    .build()
-                    .create(RetrofitApi::class.java)
+        Retrofit.Builder()
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient())
+            .baseUrl(Constants.ENDPOINT)
+            .build()
+            .create(RetrofitApi::class.java)
 
     override fun init(): Completable {
         return service.call()
-                .compose(completableManageThreads())
+            .compose(completableManageThreads())
     }
 
     /**
@@ -48,7 +47,7 @@ class ApiServiceProd : ApiService {
     private fun <T> singleManageThreads(): SingleTransformer<T, T> {
         return SingleTransformer { single ->
             single.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
         }
     }
 
@@ -58,9 +57,7 @@ class ApiServiceProd : ApiService {
     private fun completableManageThreads(): CompletableTransformer {
         return CompletableTransformer { completable ->
             completable.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
         }
     }
-
-
 }

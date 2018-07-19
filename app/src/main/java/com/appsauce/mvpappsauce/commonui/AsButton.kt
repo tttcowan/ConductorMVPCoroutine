@@ -19,6 +19,5 @@ class AsButton : Button {
     }
 
     private fun init(context: Context, attrs: AttributeSet?) {
-
     }
 }
