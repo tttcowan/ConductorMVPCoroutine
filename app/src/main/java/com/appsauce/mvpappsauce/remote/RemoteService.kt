@@ -5,5 +5,5 @@ import io.reactivex.Completable
 
 interface RemoteService {
     fun initRxJava(): Completable
-    fun initCoRoutine(): TestResponse
+    fun initCoroutine(): TestResponse
 }

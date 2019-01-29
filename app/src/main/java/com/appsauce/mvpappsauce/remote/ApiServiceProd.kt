@@ -42,8 +42,8 @@ class ApiServiceProd : ApiService {
             .compose(completableManageThreads())
     }
 
-    override fun initCoRoutine(): TestResponse {
-        return service.postsCoRoutine()
+    override fun initCoroutine(): TestResponse {
+        return service.postsCoroutine()
             .makeCall()
     }
 

@@ -11,5 +11,5 @@ interface RetrofitApi {
     fun postsRxJava(): Completable
 
     @GET("get")
-    fun postsCoRoutine(): Call<TestResponse>
+    fun postsCoroutine(): Call<TestResponse>
 }

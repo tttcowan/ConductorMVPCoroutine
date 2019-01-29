@@ -3,6 +3,7 @@ package com.appsauce.mvpappsauce.remote
 import retrofit2.Call
 
 fun <T> Call<T>.makeCall(): T {
+    //TODO Expand on this.
     val response = execute()
     if (response.isSuccessful) {
         return response.body() ?: throw RuntimeException("Response cannot be null")

@@ -5,5 +5,5 @@ import io.reactivex.Completable
 
 interface ApiService {
     fun initRxJava(): Completable
-    fun initCoRoutine(): TestResponse
+    fun initCoroutine(): TestResponse
 }

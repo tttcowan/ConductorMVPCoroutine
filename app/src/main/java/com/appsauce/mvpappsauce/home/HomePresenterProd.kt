@@ -24,7 +24,7 @@ class HomePresenterProd(
             view.callComplete()
         })
         backgroundTask.run({
-            remote.initCoRoutine()
+            remote.initCoroutine()
         }, {
             "Call complete".toast()
         }, {
