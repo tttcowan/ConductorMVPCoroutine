@@ -1,12 +1,14 @@
 package com.appsauce.mvpappsauce.base
 
+import com.appsauce.mvpappsauce.coroutine.BackgroundTask
 import com.appsauce.mvpappsauce.dialog.DialogId
+import com.appsauce.mvpappsauce.module.CoroutineScopeModule
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
 
     protected val disposable = CompositeDisposable()
-    protected val backgroundTask = BackgroundTask()
+    protected val backgroundTask = BackgroundTask(CoroutineScopeModule.scopes())
 
     protected var view: V? = null
 
