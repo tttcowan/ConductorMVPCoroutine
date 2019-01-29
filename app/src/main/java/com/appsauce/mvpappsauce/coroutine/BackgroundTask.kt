@@ -14,6 +14,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
     private val tasks: MutableList<CoroutineScope> = mutableListOf()
 
     fun <T> run(
+        //Task to run
         task: () -> T,
         complete: (value: T) -> Unit,
         error: (e: Exception) -> Unit

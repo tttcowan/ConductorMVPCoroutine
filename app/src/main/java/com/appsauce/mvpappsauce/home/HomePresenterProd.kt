@@ -20,9 +20,13 @@ class HomePresenterProd(
 
     override fun attachView(view: HomeView) {
         super.attachView(view)
+
+        //Rx Call example
         disposable.add(remote.initRxJava().subscribeBy {
             view.callComplete()
         })
+
+        //Coroutine call example
         backgroundTask.run({
             remote.initCoroutine()
         }, {
