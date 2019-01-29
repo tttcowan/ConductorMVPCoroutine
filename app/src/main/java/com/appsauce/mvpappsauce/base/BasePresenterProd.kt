@@ -6,6 +6,7 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
 
     protected val disposable = CompositeDisposable()
+    protected val backgroundTask = BackgroundTask()
 
     protected var view: V? = null
 
@@ -16,6 +17,7 @@ abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
     override fun detachView() {
         view = null
         disposable.clear()
+        backgroundTask.clear()
     }
 
     override fun dialogDismiss(dialogId: DialogId) {

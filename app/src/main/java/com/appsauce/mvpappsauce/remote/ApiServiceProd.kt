@@ -1,6 +1,7 @@
 package com.appsauce.mvpappsauce.remote
 
 import com.appsauce.mvpappsauce.app.Constants
+import com.appsauce.mvpappsauce.remote.model.TestResponse
 import com.appsauce.mvpappsauce.util.DebugUtil
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
@@ -36,9 +37,14 @@ class ApiServiceProd : ApiService {
             .build()
             .create(RetrofitApi::class.java)
 
-    override fun init(): Completable {
-        return service.call()
+    override fun initRxJava(): Completable {
+        return service.postsRxJava()
             .compose(completableManageThreads())
+    }
+
+    override fun initCoRoutine(): TestResponse {
+        return service.postsCoRoutine()
+            .makeCall()
     }
 
     /**

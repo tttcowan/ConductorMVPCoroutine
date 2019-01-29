@@ -7,10 +7,6 @@ import com.bluelinelabs.conductor.Controller
 
 abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controller, BaseView {
 
-    fun tag(): String {
-        return this::class.java.simpleName
-    }
-
     constructor() : super()
     constructor(bundle: Bundle) : super(bundle)
 

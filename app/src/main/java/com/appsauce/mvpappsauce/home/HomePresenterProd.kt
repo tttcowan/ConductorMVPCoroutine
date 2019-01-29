@@ -3,6 +3,7 @@ package com.appsauce.mvpappsauce.home
 import com.appsauce.mvpappsauce.base.BasePresenterProd
 import com.appsauce.mvpappsauce.dialog.DialogId
 import com.appsauce.mvpappsauce.dialog.DialogService
+import com.appsauce.mvpappsauce.extension.toast
 import com.appsauce.mvpappsauce.navigation.NavigationService
 import com.appsauce.mvpappsauce.remote.RemoteService
 import io.reactivex.rxkotlin.subscribeBy
@@ -19,8 +20,15 @@ class HomePresenterProd(
 
     override fun attachView(view: HomeView) {
         super.attachView(view)
-        disposable.add(remote.init().subscribeBy {
+        disposable.add(remote.initRxJava().subscribeBy {
             view.callComplete()
+        })
+        backgroundTask.run({
+            remote.initCoRoutine()
+        }, {
+            "Call complete".toast()
+        }, {
+            "Call failed".toast()
         })
     }
 
