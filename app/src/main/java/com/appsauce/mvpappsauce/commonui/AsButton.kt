@@ -1,8 +1,8 @@
 package com.appsauce.mvpappsauce.commonui
 
 import android.content.Context
-import android.support.v7.widget.AppCompatButton
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatButton
 
 class AsButton : AppCompatButton {
 

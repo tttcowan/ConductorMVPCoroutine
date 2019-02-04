@@ -1,7 +1,7 @@
 package com.appsauce.mvpappsauce.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.appsauce.mvpappsauce.R
 import com.appsauce.mvpappsauce.app.App
 import com.appsauce.mvpappsauce.module.PresenterModule

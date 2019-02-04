@@ -3,7 +3,7 @@ package com.appsauce.mvpappsauce.extension
 import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.view.View
 import android.view.animation.Animation
 import com.appsauce.mvpappsauce.R

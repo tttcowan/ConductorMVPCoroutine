@@ -1,6 +1,6 @@
 package com.appsauce.mvpappsauce.extension
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 
 fun ViewPager.pageSelected(updatePos: (pos: Int) -> Unit) {
 
