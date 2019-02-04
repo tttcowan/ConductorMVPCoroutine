@@ -1,10 +1,10 @@
 package com.appsauce.mvpappsauce.commonui
 
 import android.content.Context
+import android.support.v7.widget.AppCompatButton
 import android.util.AttributeSet
-import android.widget.Button
 
-class AsButton : Button {
+class AsButton : AppCompatButton {
 
     constructor(context: Context) : super(context) {
         init(context, null)
