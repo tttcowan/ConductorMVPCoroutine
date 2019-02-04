@@ -12,8 +12,7 @@ data class TestResponse(
     @SerializedName("url")
     val url: String = ""
 ) {
-    class Args(
-    )
+    class Args
 
     data class Headers(
         @SerializedName("Accept")

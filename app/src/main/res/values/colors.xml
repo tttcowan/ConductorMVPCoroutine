@@ -5,7 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="background">@android:color/white</color>
     <color name="textColorPrimary">@android:color/black</color>
-    <color name="textColorError">@android:color/holo_red_dark</color>
 
     <color name="as_dialog_transparency">#88000000</color>
     <color name="as_dialog_bg">@color/background</color>
