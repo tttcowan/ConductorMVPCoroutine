@@ -1,6 +1,7 @@
 package com.appsauce.mvpappsauce.app
 
 import android.content.Context
+import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.bluelinelabs.conductor.Router
 
@@ -32,4 +33,10 @@ class App : MultiDexApplication() {
         super.onCreate()
         APP = this
     }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
 }

@@ -9,7 +9,6 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="textColorError">@color/textColorError</item>
     </style>
 
     <style name="ControllerRootLayout">
