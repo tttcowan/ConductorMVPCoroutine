@@ -12,7 +12,7 @@ import com.appsauce.mvpappsauce.main.MainView
 
 object PresenterModule {
 
-    //Dialog
+    // Dialog
     fun twoButtonDialog(): TwoButtonDialogPresenter {
         return TwoButtonDialogPresenterProd()
     }
@@ -21,7 +21,7 @@ object PresenterModule {
         return SingleButtonDialogPresenterProd()
     }
 
-    //Screens
+    // Screens
     fun main(view: MainView): MainPresenter {
         return MainPresenterProd(view, NavigationModule.navigationService())
     }

@@ -14,14 +14,14 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
     private val tasks: MutableList<CoroutineScope> = mutableListOf()
 
     fun <T> run(
-        //Task to run
+        // Task to run
         task: () -> T,
         complete: (value: T) -> Unit,
         error: (e: Exception) -> Unit
     ) {
         clear = false
         scopes.subscribe().launch {
-            //Create new coroutine scope for cancelling. Not at all tested.
+            // Create new coroutine scope for cancelling. Not at all tested.
             coroutineScope {
                 tasks.add(this)
                 try {
@@ -46,7 +46,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
             try {
                 it.cancel()
             } catch (e: IllegalStateException) {
-                //Task already cancelled.
+                // Task already cancelled.
             }
         }
         tasks.clear()

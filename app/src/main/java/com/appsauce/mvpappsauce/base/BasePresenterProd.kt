@@ -8,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
 
     protected val disposable = CompositeDisposable()
-    //Inject scopes, for testing the module would need updating in it's current form. There could be a better way.
+    // Inject scopes, for testing the module would need updating in it's current form. There could be a better way.
     protected val backgroundTask = BackgroundTask(CoroutineScopeModule.scopes())
 
     protected var view: V? = null

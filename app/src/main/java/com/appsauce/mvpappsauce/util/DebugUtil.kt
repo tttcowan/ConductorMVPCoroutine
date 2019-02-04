@@ -9,7 +9,7 @@ object DebugUtil {
     }
 
     fun isErrorReporting(): Boolean {
-        //Allows switching of crashlytics etc. on/off.
+        // Allows switching of crashlytics etc. on/off.
         return true
     }
 }

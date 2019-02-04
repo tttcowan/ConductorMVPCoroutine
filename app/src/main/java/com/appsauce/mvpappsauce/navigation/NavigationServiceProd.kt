@@ -28,10 +28,10 @@ class NavigationServiceProd(private var router: Router?) : NavigationService {
         fade: Boolean = true,
         isModal: Boolean = false
     ) {
-        //Attempt pop to TAG
+        // Attempt pop to TAG
         val popped = router?.popToTag(controller.tag()) ?: false
         if (!popped) {
-            //Tag not found so push controller to top of stack
+            // Tag not found so push controller to top of stack
             var transaction = RouterTransaction.with(controller).tag(controller.tag())
             if (fade) {
                 transaction =

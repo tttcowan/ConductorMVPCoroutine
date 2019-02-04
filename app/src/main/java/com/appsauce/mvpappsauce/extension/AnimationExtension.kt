@@ -3,9 +3,9 @@ package com.appsauce.mvpappsauce.extension
 import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
-import androidx.annotation.ColorInt
 import android.view.View
 import android.view.animation.Animation
+import androidx.annotation.ColorInt
 import com.appsauce.mvpappsauce.R
 
 fun View.fadeIn(duration: Long = 0L, finish: () -> Unit = {}) {
@@ -32,7 +32,10 @@ fun View.fadeOut(duration: Long = 0L, finish: () -> Unit = {}) {
 }
 
 fun View.animateBg(
-    @ColorInt fromColor: Int, @ColorInt toColor: Int, durationMs: Long,
+    @ColorInt
+    fromColor: Int,
+    @ColorInt toColor: Int,
+    durationMs: Long,
     finish: () -> Unit = {}
 ): ValueAnimator {
     val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), fromColor, toColor)
