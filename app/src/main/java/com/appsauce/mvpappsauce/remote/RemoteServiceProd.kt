@@ -8,7 +8,7 @@ class RemoteServiceProd(private val service: ApiService) : RemoteService {
         return service.initRxJava()
     }
 
-    override fun initCoroutine(): TestResponse {
-        return service.initCoroutine()
+    override fun initCoroutine(): () -> TestResponse {
+        return { service.initCoroutine() }
     }
 }

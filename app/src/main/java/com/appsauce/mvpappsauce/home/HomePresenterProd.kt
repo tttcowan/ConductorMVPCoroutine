@@ -27,13 +27,13 @@ class HomePresenterProd(
         })
 
         // Coroutine call example
-        backgroundTask.run({
+        backgroundTask.run(
             remote.initCoroutine()
-        }, {
-            "Call complete".toast()
-        }, {
-            "Call failed".toast()
-        })
+            , {
+                "Call complete".toast()
+            }, {
+                "Call failed".toast()
+            })
     }
 
     override fun dialogDismiss(dialogId: DialogId) {
