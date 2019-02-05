@@ -28,8 +28,7 @@ class HomePresenterProd(
 
         // Coroutine call example
         backgroundTask.run(
-            remote.initCoroutine()
-            , {
+            remote.initCoroutine(), {
                 "Call complete".toast()
             }, {
                 "Call failed".toast()
