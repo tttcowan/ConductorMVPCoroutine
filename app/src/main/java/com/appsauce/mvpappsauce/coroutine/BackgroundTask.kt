@@ -3,6 +3,7 @@ package com.appsauce.mvpappsauce.coroutine
 import com.appsauce.mvpappsauce.extension.logE
 import com.appsauce.mvpappsauce.extension.tag
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -41,6 +42,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
         }
     }
 
+    @UseExperimental(ExperimentalCoroutinesApi::class)
     fun clear() {
         tasks.forEach {
             try {

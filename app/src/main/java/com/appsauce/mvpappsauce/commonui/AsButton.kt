@@ -7,17 +7,17 @@ import androidx.appcompat.widget.AppCompatButton
 class AsButton : AppCompatButton {
 
     constructor(context: Context) : super(context) {
-        init(context, null)
+        init()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init(context, attrs)
+        init()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init(context, attrs)
+        init()
     }
 
-    private fun init(context: Context, attrs: AttributeSet?) {
+    private fun init() {
     }
 }

@@ -6,11 +6,6 @@ import com.appsauce.mvpappsauce.util.DebugUtil
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import io.reactivex.Completable
-import io.reactivex.CompletableTransformer
-import io.reactivex.SingleTransformer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -37,33 +32,8 @@ class ApiServiceProd : ApiService {
             .build()
             .create(RetrofitApi::class.java)
 
-    override fun initRxJava(): Completable {
-        return service.postsRxJava()
-            .compose(completableManageThreads())
-    }
-
     override fun initCoroutine(): TestResponse {
         return service.postsCoroutine()
             .makeCall()
-    }
-
-    /**
-     * Manage single threads.
-     */
-    private fun <T> singleManageThreads(): SingleTransformer<T, T> {
-        return SingleTransformer { single ->
-            single.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
-    }
-
-    /**
-     * Manage completable threads.
-     */
-    private fun completableManageThreads(): CompletableTransformer {
-        return CompletableTransformer { completable ->
-            completable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
     }
 }

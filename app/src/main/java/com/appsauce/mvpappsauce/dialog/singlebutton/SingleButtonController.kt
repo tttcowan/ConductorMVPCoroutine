@@ -19,7 +19,8 @@ class SingleButtonController(bundle: Bundle) :
 
     private val dialogText = bundle.getString(KEY_DIALOG_TEXT)
     private val primaryButtonText = bundle.getString(KEY_PRIMARY_BUTTON_TEXT)
-    private val dialogId: DialogId = bundle.getParcelable(KEY_DIALOG_ID)
+    private val dialogId: DialogId =
+        bundle.getParcelable(KEY_DIALOG_ID) ?: throw RuntimeException("Dialog id cannot be null")
 
     companion object {
 

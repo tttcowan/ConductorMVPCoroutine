@@ -6,7 +6,6 @@ import com.appsauce.mvpappsauce.dialog.DialogService
 import com.appsauce.mvpappsauce.extension.toast
 import com.appsauce.mvpappsauce.navigation.NavigationService
 import com.appsauce.mvpappsauce.remote.RemoteService
-import io.reactivex.rxkotlin.subscribeBy
 
 class HomePresenterProd(
     private val remote: RemoteService,
@@ -21,15 +20,10 @@ class HomePresenterProd(
     override fun attachView(view: HomeView) {
         super.attachView(view)
 
-        // Rx Call example
-        disposable.add(remote.initRxJava().subscribeBy {
-            view.callComplete()
-        })
-
         // Coroutine call example
         backgroundTask.run(
             remote.initCoroutine(), {
-                "Call complete".toast()
+                view.callComplete()
             }, {
                 "Call failed".toast()
             })
