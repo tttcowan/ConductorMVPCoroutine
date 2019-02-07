@@ -17,12 +17,12 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
     fun <T> run(
         // Task to run
         task: suspend () -> T,
-        complete: (value: T) -> Unit,
-        error: (e: Exception) -> Unit
+        complete: (value: T) -> Unit = {},
+        error: (e: Exception) -> Unit = {}
     ) {
         clear = false
         scopes.subscribe().launch {
-            // Create new coroutine scope for cancelling. Not at all tested.
+            // Create new coroutine scope for cancelling.
             coroutineScope {
                 tasks.add(this)
                 try {

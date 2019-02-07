@@ -13,20 +13,23 @@ class HomePresenterProd(
     private val dialogServiceProd: DialogService
 ) : BasePresenterProd<HomeView>(), HomePresenter {
 
-    override fun callReturn() {
-        dialogServiceProd.showTwoButtonDialog("Ok", "Cancel", "Dialog Test", DialogId.DEFAULT)
-    }
-
     override fun attachView(view: HomeView) {
         super.attachView(view)
-
         // Coroutine call example
         backgroundTask.run(
-            remote.initCoroutine(), {
+            task = {
+                remote.initCoroutine()
+            },
+            complete = {
                 view.callComplete()
-            }, {
+            },
+            error = {
                 "Call failed".toast()
             })
+    }
+
+    override fun callReturn() {
+        dialogServiceProd.showTwoButtonDialog("Ok", "Cancel", "Dialog Test", DialogId.DEFAULT)
     }
 
     override fun dialogDismiss(dialogId: DialogId) {
