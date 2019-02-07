@@ -16,7 +16,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
 
     fun <T> run(
         // Task to run
-        task: () -> T,
+        task: suspend () -> T,
         complete: (value: T) -> Unit,
         error: (e: Exception) -> Unit
     ) {

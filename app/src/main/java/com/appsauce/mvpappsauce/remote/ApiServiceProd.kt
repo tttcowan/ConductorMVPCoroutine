@@ -32,7 +32,7 @@ class ApiServiceProd : ApiService {
             .build()
             .create(RetrofitApi::class.java)
 
-    override fun initCoroutine(): TestResponse {
+    override suspend fun initCoroutine(): TestResponse {
         return service.postsCoroutine()
             .makeCall()
     }
