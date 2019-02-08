@@ -37,5 +37,4 @@ class MainPresenterProdTest {
         presenter.viewReady()
         verify(navigationService, only()).toHome()
     }
-
 }

@@ -7,6 +7,7 @@ import com.appsauce.mvpappsauce.module.CoroutineScopeModule
 import com.appsauce.mvpappsauce.navigation.NavigationService
 import com.appsauce.mvpappsauce.remote.RemoteService
 import com.appsauce.mvpappsauce.remote.model.TestResponse
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.whenever
@@ -54,5 +55,11 @@ class HomePresenterProdTest {
             presenter.attachView(view)
             verify(view, times(1)).callComplete()
         }
+    }
+
+    @Test
+    fun testDialogShowOnCallReturn() {
+        presenter.callReturn()
+        verify(dialogService, times(1)).showTwoButtonDialog(any(), any(), any(), any())
     }
 }

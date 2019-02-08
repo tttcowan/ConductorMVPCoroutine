@@ -4,12 +4,13 @@ import com.appsauce.mvpappsauce.extension.logE
 import com.appsauce.mvpappsauce.extension.tag
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class BackgroundTask(private val scopes: CoroutineScopes) {
+class BackgroundTask(private val coroutineContexts: CoroutineContexts) {
 
     private var clear: Boolean = false
     private val tasks: MutableList<CoroutineScope> = mutableListOf()
@@ -22,7 +23,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
     ) {
         clear = false
 
-        scopes.subscribe().launch {
+        GlobalScope.launch(coroutineContexts.subscribe()) {
             // Create new coroutine scope for cancelling.
             coroutineScope {
                 tasks.add(this)
@@ -30,13 +31,13 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
                     if (!clear) {
                         val value = task()
                         tasks.remove(this)
-                        withContext(scopes.observe()) { complete(value) }
+                        withContext(coroutineContexts.observe()) { complete(value) }
                     }
                 } catch (e: Exception) {
                     tasks.remove(this)
                     "Call failed".logE(tag(), e)
                     if (!clear) {
-                        withContext(scopes.observe()) { error(e) }
+                        withContext(coroutineContexts.observe()) { error(e) }
                     }
                 }
             }

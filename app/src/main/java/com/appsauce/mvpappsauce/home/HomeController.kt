@@ -18,6 +18,7 @@ class HomeController : BaseController<HomeView, HomePresenter>(), HomeView {
     }
 
     override fun callComplete() {
+        "Call complete".toast()
         presenter.callReturn()
     }
 
