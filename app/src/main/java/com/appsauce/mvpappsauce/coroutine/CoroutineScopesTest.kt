@@ -4,12 +4,13 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
-class CoroutineScopesProd : CoroutineScopes {
+class CoroutineScopesTest : CoroutineScopes {
+
     override fun subscribe(): CoroutineScope {
-        return CoroutineScope(Dispatchers.IO)
+        return CoroutineScope(Dispatchers.Unconfined)
     }
 
     override fun observe(): CoroutineDispatcher {
-        return Dispatchers.Main
+        return Dispatchers.Unconfined
     }
 }

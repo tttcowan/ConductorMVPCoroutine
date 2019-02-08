@@ -3,7 +3,8 @@ package com.appsauce.mvpappsauce.home
 import com.appsauce.mvpappsauce.base.BasePresenterProd
 import com.appsauce.mvpappsauce.dialog.DialogId
 import com.appsauce.mvpappsauce.dialog.DialogService
-import com.appsauce.mvpappsauce.extension.toast
+import com.appsauce.mvpappsauce.extension.logE
+import com.appsauce.mvpappsauce.extension.tag
 import com.appsauce.mvpappsauce.navigation.NavigationService
 import com.appsauce.mvpappsauce.remote.RemoteService
 
@@ -24,7 +25,8 @@ class HomePresenterProd(
                 view.callComplete()
             },
             error = {
-                "Call failed".toast()
+                view.callError()
+                "Call failed".logE(tag(), it)
             })
     }
 

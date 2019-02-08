@@ -21,6 +21,7 @@ class BackgroundTask(private val scopes: CoroutineScopes) {
         error: (e: Exception) -> Unit = {}
     ) {
         clear = false
+
         scopes.subscribe().launch {
             // Create new coroutine scope for cancelling.
             coroutineScope {

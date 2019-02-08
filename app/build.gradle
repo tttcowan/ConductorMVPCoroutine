@@ -68,7 +68,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
 
