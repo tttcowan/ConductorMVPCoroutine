@@ -4,7 +4,7 @@ import com.appsauce.mvpappsauce.dialog.DialogId.DEFAULT
 import com.appsauce.mvpappsauce.dialog.DialogService
 import com.appsauce.mvpappsauce.home.HomePresenterProd
 import com.appsauce.mvpappsauce.home.HomeView
-import com.appsauce.mvpappsauce.module.CoroutineScopeModule
+import com.appsauce.mvpappsauce.module.CoroutineSchedulerModule
 import com.appsauce.mvpappsauce.navigation.NavigationService
 import com.appsauce.mvpappsauce.remote.RemoteService
 import com.appsauce.mvpappsauce.remote.model.TestResponse
@@ -31,7 +31,7 @@ class HomePresenterProdTest {
 
     @Before
     fun before() {
-        CoroutineScopeModule.testing()
+        CoroutineSchedulerModule.testing()
         presenter = HomePresenterProd(remoteService, navigationService, dialogService)
     }
 

@@ -5,7 +5,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlin.coroutines.CoroutineContext
 
-class CoroutineContextsTest : CoroutineContexts {
+class CoroutineSchedulerTest : CoroutineScheduler {
 
     @UseExperimental(ExperimentalCoroutinesApi::class)
     override fun subscribe(): CoroutineContext {

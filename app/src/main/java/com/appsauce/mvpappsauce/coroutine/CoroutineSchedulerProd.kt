@@ -4,7 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlin.coroutines.CoroutineContext
 
-class CoroutineContextsProd : CoroutineContexts {
+class CoroutineSchedulerProd : CoroutineScheduler {
     override fun subscribe(): CoroutineContext {
         return GlobalScope.coroutineContext + Dispatchers.Default
     }

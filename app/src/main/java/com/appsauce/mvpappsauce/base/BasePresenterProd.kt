@@ -2,11 +2,11 @@ package com.appsauce.mvpappsauce.base
 
 import com.appsauce.mvpappsauce.coroutine.BackgroundTask
 import com.appsauce.mvpappsauce.dialog.DialogId
-import com.appsauce.mvpappsauce.module.CoroutineScopeModule
+import com.appsauce.mvpappsauce.module.CoroutineSchedulerModule
 
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
 
-    protected val backgroundTask = BackgroundTask(CoroutineScopeModule.scopes())
+    protected val backgroundTask = BackgroundTask(CoroutineSchedulerModule.scopes())
 
     protected var view: V? = null
 
