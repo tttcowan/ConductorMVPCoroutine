@@ -1,6 +1,5 @@
 package uk.co.appsauce.mvpappsauce
 
-import com.appsauce.mvpappsauce.module.CoroutineSchedulerModule
 import com.appsauce.mvpappsauce.remote.ApiService
 import com.appsauce.mvpappsauce.remote.RemoteServiceProd
 import com.appsauce.mvpappsauce.remote.model.TestResponse
@@ -21,7 +20,6 @@ class RemoteServiceProdTest {
 
     @Before
     fun before() {
-        CoroutineSchedulerModule.testing()
         runBlocking {
             whenever(apiService.initCoroutine()).thenReturn(initCoroutineResponse)
         }
