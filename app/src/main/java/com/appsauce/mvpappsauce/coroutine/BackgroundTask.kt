@@ -16,14 +16,14 @@ class BackgroundTask(private val coroutineScheduler: CoroutineScheduler) {
         task: suspend () -> T,
         complete: (value: T) -> Unit = {},
         error: (e: Exception) -> Unit = {}
-    ) {
-        val job: Job = GlobalScope.launch(coroutineScheduler.subscribe()) {
+    ) { val job = Job()
+        GlobalScope.launch(coroutineScheduler.subscribe() + job) {
             try {
                 val value = task()
-                withContext(coroutineScheduler.observe()) { complete(value) }
+                withContext(coroutineScheduler.observe() + job) { complete(value) }
             } catch (e: Exception) {
                 "Call failed".logE(tag(), e)
-                withContext(coroutineScheduler.observe()) { error(e) }
+                withContext(coroutineScheduler.observe() + job) { error(e) }
             }
         }
         jobs.add(job)
@@ -39,5 +39,23 @@ class BackgroundTask(private val coroutineScheduler: CoroutineScheduler) {
             }
         }
         jobs.clear()
+    }
+
+    fun <T> observe(
+        task: suspend () -> T,
+        observe: (state: TaskState<T>) -> Unit
+    ) {
+        observe(TaskState.Loading())
+        run(task, {
+            observe(TaskState.Success(it))
+        }, {
+            observe(TaskState.Error(it))
+        })
+    }
+
+    sealed class TaskState<T> {
+        class Success<T>(val response: T) : TaskState<T>()
+        class Error<T>(val error: Exception) : TaskState<T>()
+        class Loading<T> : TaskState<T>()
     }
 }
