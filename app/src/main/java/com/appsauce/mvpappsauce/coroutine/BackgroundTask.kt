@@ -1,5 +1,6 @@
 package com.appsauce.mvpappsauce.coroutine
 
+import com.appsauce.mvpappsauce.extension.logD
 import com.appsauce.mvpappsauce.extension.logE
 import com.appsauce.mvpappsauce.extension.tag
 import kotlinx.coroutines.GlobalScope
@@ -16,27 +17,36 @@ class BackgroundTask(private val coroutineScheduler: CoroutineScheduler) {
         task: suspend () -> T,
         complete: (value: T) -> Unit = {},
         error: (e: Exception) -> Unit = {}
-    ) { val job = Job()
-        GlobalScope.launch(coroutineScheduler.subscribe() + job) {
+    ) {
+        val job = GlobalScope.launch(coroutineScheduler.subscribe()) {
             try {
                 val value = task()
-                withContext(coroutineScheduler.observe() + job) { complete(value) }
+                withContext(coroutineScheduler.observe()) { complete(value) }
             } catch (e: Exception) {
                 "Call failed".logE(tag(), e)
-                withContext(coroutineScheduler.observe() + job) { error(e) }
+                withContext(coroutineScheduler.observe()) { error(e) }
             }
         }
         jobs.add(job)
-        job.invokeOnCompletion { jobs.remove(job) }
+        job.invokeOnCompletion {
+            "Job removed".logD(tag())
+            jobs.remove(job)
+        }
     }
 
-    fun clear() {
-        jobs.forEach {
-            try {
-                it.cancel()
-            } catch (e: IllegalStateException) {
-                // Task already cancelled.
+    fun clear(sourceTag: String) {
+        "Clear called from : $sourceTag".logD(tag())
+        try {
+            jobs.forEach {
+                try {
+                    it.cancel()
+                    "$sourceTag : Job cancelled : $it".logD(tag())
+                } catch (e: Exception) {
+                    // Task already cancelled.
+                }
             }
+        } catch (e: Exception) {
+            "Jobs for each exception".logE(tag(), e)
         }
         jobs.clear()
     }

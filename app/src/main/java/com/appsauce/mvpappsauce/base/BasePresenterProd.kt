@@ -2,6 +2,7 @@ package com.appsauce.mvpappsauce.base
 
 import com.appsauce.mvpappsauce.coroutine.BackgroundTask
 import com.appsauce.mvpappsauce.dialog.DialogId
+import com.appsauce.mvpappsauce.extension.tag
 import com.appsauce.mvpappsauce.module.CoroutineSchedulerModule
 
 abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
@@ -16,7 +17,7 @@ abstract class BasePresenterProd<V : BaseView> : BasePresenter<V> {
 
     override fun detachView() {
         view = null
-        backgroundTask.clear()
+        backgroundTask.clear(tag())
     }
 
     override fun dialogDismiss(dialogId: DialogId) {
