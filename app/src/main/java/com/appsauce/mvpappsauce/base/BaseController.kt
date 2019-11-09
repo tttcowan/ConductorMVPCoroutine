@@ -3,6 +3,7 @@ package com.appsauce.mvpappsauce.base
 import android.os.Bundle
 import android.view.View
 import com.appsauce.mvpappsauce.dialog.DialogId
+import com.appsauce.mvpappsauce.extension.toast
 import com.bluelinelabs.conductor.Controller
 
 abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controller, BaseView {
@@ -21,6 +22,10 @@ abstract class BaseController<in V : BaseView, P : BasePresenter<V>> : Controlle
     override fun onDetach(view: View) {
         super.onDetach(view)
         presenter.detachView()
+    }
+
+    override fun toast(toast: String) {
+        toast.toast()
     }
 
     override fun dialogDismiss(dialogId: DialogId) {
