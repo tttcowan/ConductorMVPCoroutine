@@ -19,6 +19,10 @@ class NavigationServiceProd(private var router: Router?) : NavigationService {
         return router?.handleBack() ?: false
     }
 
+    override fun hasRootController() : Boolean {
+        return router?.hasRootController() ?: false
+    }
+
     override fun destroy() {
         router = null
     }

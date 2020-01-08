@@ -16,7 +16,6 @@
         tools:replace="android:allowBackup">
         <activity
             android:name=".main.MainActivity"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
