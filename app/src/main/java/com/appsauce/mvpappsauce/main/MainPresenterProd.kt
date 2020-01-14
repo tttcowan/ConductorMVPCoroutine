@@ -15,4 +15,8 @@ class MainPresenterProd(
         view = null
         navigationService.destroy()
     }
+
+    override fun handleBack(): Boolean {
+        return navigationService.handleBack()
+    }
 }
