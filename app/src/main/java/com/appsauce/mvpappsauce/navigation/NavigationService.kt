@@ -4,4 +4,5 @@ interface NavigationService {
     fun handleBack(): Boolean
     fun toHome()
     fun destroy()
+    fun hasRootController(): Boolean
 }
