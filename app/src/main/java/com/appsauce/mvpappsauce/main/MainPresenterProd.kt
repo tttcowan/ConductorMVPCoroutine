@@ -8,7 +8,7 @@ class MainPresenterProd(
 ) : MainPresenter {
 
     override fun viewReady() {
-        if (!navigationService.hasRootController()){
+        if (!navigationService.hasRootController()) {
             navigationService.toHome()
         }
     }

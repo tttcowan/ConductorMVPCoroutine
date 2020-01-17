@@ -1,6 +1,7 @@
 package com.appsauce.mvpappsauce.app
 
 import android.content.Context
+import android.content.res.Resources
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.bluelinelabs.conductor.Router
@@ -24,6 +25,11 @@ class App : MultiDexApplication() {
         @JvmStatic
         fun getRouter(): Router? {
             return APP.router
+        }
+
+        @JvmStatic
+        fun resources(): Resources {
+            return APP.resources
         }
     }
 
